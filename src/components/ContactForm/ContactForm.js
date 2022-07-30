@@ -17,8 +17,12 @@ class ContactForm extends Component {
   };
   onSubmit = e => {
     e.preventDefault();
-    console.log(this.state);
-    this.props.onSubmit(this.state);
+    const { name, number } = this.state;
+    const newContact = {
+        name,
+        number,
+    };
+    this.props.onSubmit(newContact);
     this.reset();
   };
 
