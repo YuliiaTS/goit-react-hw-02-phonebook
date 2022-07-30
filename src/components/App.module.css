@@ -9,9 +9,3 @@
     color: #010101;
     background-color: #F5F4FA;
 }
-
-.label {
-    margin-bottom: 10px;
-    display: flex;
-    flex-direction: column;
-}
