@@ -1,16 +1,14 @@
-export const App = () => {
-  return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+import React, { Component } from 'react';
+import style from '../components/App.module.css';
+
+class App extends Component {
+  render() {
+    return (
+    <div className={style.main}>
+
     </div>
-  );
-};
+    )
+  }
+}
+
+export default App;
