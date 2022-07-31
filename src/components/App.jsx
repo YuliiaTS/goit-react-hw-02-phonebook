@@ -14,11 +14,11 @@ class App extends Component {
     ],
     filter: '',
   };
-  
+
   onSubmit = newContact => {
     console.log(newContact);
-    this.setState(prevState => ({
-      contacts: [newContact, ...prevState.contacts],
+    this.setState(({contacts}) => ({
+      contacts: [newContact, ...contacts],
     }))
   };
 
@@ -35,8 +35,9 @@ class App extends Component {
 
   render() {
     const { contacts, filter } = this.state;
+    const normalizedFilter = filter.toLocaleLowerCase()
     const phoneContacts = contacts.filter(contact =>
-      contact.name.toLocaleLowerCase()
+      contact.name.toLocaleLowerCase().includes(normalizedFilter)
     );
 
     return (
