@@ -21,6 +21,7 @@ class ContactForm extends Component {
     const newContact = {
         name,
         number,
+        id: String(nanoid(10)),
     };
     this.props.onSubmit(newContact);
     this.reset();
@@ -60,7 +61,7 @@ class ContactForm extends Component {
             id={this.numberInputId}
           />
         </label>
-        <button type="submit">Add contact</button>
+        <button className={style.addBtn} type="submit">Add contact</button>
       </form>
     );
   }

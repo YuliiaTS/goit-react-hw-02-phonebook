@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import style from '../components/App.module.css';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
+import Filter from './Filter/Filter';
 
 class App extends Component {
   state = {
@@ -13,8 +14,12 @@ class App extends Component {
     ],
     filter: '',
   };
-  onSubmit = data => {
-    console.log(data);
+  
+  onSubmit = newContact => {
+    console.log(newContact);
+    this.setState(prevState => ({
+      contacts: [newContact, ...prevState.contacts],
+    }))
   };
 
   deleteContact = id => {
@@ -23,8 +28,13 @@ class App extends Component {
     }));
   };
 
+  onChange = e => (
+    // console.log(e.target.value)
+    this.setState({ filter: e.target.value })
+  );
+
   render() {
-    const { contacts } = this.state;
+    const { contacts, filter } = this.state;
     const phoneContacts = contacts.filter(contact =>
       contact.name.toLocaleLowerCase()
     );
@@ -34,7 +44,7 @@ class App extends Component {
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.onSubmit} />
         <h2>Contacts</h2>
-        {/* <Filter /> */}
+        <Filter filter={filter} onChange={this.onChange}/>
         <ContactList phoneContacts={phoneContacts} deleteContact={this.deleteContact}/>
       </div>
     );
