@@ -16,10 +16,13 @@ class App extends Component {
   };
 
   onSubmit = newContact => {
-    console.log(newContact);
-    this.setState(({contacts}) => ({
-      contacts: [newContact, ...contacts],
-    }))
+    if (this.state.contacts.find(contact => contact.name === newContact.name)) {
+      return alert (newContact.name + 'is alredy in contacts.');
+    } else {
+      this.setState(({contacts}) => ({
+        contacts: [newContact, ...contacts],
+      }))
+    }
   };
 
   deleteContact = id => {
@@ -29,7 +32,6 @@ class App extends Component {
   };
 
   onChange = e => (
-    // console.log(e.target.value)
     this.setState({ filter: e.target.value })
   );
 
@@ -43,7 +45,7 @@ class App extends Component {
     return (
       <div className={style.main}>
         <h1>Phonebook</h1>
-        <ContactForm onSubmit={this.onSubmit} />
+        <ContactForm onSubmit={this.onSubmit} alertAddNewContact={this.alertAddNewContact} />
         <h2>Contacts</h2>
         <Filter filter={filter} onChange={this.onChange}/>
         <ContactList phoneContacts={phoneContacts} deleteContact={this.deleteContact}/>

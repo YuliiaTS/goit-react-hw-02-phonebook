@@ -7,6 +7,11 @@
 .label input {
     margin-top: 5px;
     padding: 5px;
-    border: 1px solid grey;
+    border: none;
+    outline: 1px solid grey;
     border-radius: 5px;
+}
+
+.label input:focus {
+    outline: 2px solid rgb(182, 134, 182);
 }
