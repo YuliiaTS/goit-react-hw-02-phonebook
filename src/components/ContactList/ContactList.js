@@ -19,11 +19,12 @@ export default function ContactList({ phoneContacts, deleteContact }) {
 };
 
 ContactList.propTypes = {
-    phoneContacts: PropTypes.arrayOf(
+   phoneContacts: PropTypes.arrayOf(
       PropTypes.shape({
          id: PropTypes.string.isRequired,
          name: PropTypes.string.isRequired,
          number: PropTypes.string.isRequired,
       })
    ),
+   deleteContact: PropTypes.func.isRequired,
 };

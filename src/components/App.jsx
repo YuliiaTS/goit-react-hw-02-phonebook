@@ -45,7 +45,7 @@ class App extends Component {
     return (
       <div className={style.main}>
         <h1>Phonebook</h1>
-        <ContactForm onSubmit={this.onSubmit} alertAddNewContact={this.alertAddNewContact} />
+        <ContactForm onSubmit={this.onSubmit} />
         <h2>Contacts</h2>
         <Filter filter={filter} onChange={this.onChange}/>
         <ContactList phoneContacts={phoneContacts} deleteContact={this.deleteContact}/>
